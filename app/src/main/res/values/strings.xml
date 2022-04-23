@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Code</string>
+
+    <string name="imageURL">https://image.tmdb.org/t/p/w500/%s</string>
+</resources>

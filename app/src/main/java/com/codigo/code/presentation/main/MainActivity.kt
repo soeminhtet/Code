@@ -1,11 +1,10 @@
 package com.codigo.code.presentation.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -13,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.codigo.code.R
 import com.codigo.code.databinding.ActivityMainBinding
-import com.codigo.code.domain.model.UpComing
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

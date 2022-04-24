@@ -4,7 +4,6 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.room.RoomDatabase
 import com.codigo.code.data.local.TMDBDatabase
 import com.codigo.code.data.paging_source.PopularRemoteMediator
 import com.codigo.code.data.paging_source.UpComingRemoteMediator

@@ -17,7 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             tools:context=".presentation.detail.DetailActivity">
 
             <ImageView
@@ -29,7 +29,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/poster"/>
 
             <TextView
                 android:id="@+id/textView9"
@@ -58,7 +59,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView9"
                 app:layout_constraintEnd_toStartOf="@+id/textView10"
                 app:layout_constraintTop_toTopOf="@+id/textView9"
-                app:srcCompat="@drawable/ic_favorite" />
+                app:srcCompat="@drawable/ic_favorite"
+                android:contentDescription="@string/favorite"/>
 
             <TextView
                 android:id="@+id/textView10"

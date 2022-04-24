@@ -2,7 +2,6 @@ package com.codigo.code.data.local.dao
 
 import androidx.paging.PagingSource
 import androidx.room.*
-import com.codigo.code.domain.model.Popular
 import com.codigo.code.domain.model.UpComing
 import kotlinx.coroutines.flow.Flow
 

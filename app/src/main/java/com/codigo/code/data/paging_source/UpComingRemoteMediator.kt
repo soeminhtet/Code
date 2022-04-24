@@ -7,8 +7,6 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.codigo.code.data.local.TMDBDatabase
 import com.codigo.code.data.remote.API
-import com.codigo.code.domain.model.Popular
-import com.codigo.code.domain.model.PopularKey
 import com.codigo.code.domain.model.UpComing
 import com.codigo.code.domain.model.UpComingKey
 

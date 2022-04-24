@@ -1,7 +1,6 @@
 package com.codigo.code.util
 
 import android.annotation.SuppressLint
-import android.content.res.Resources
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -9,7 +8,6 @@ import coil.load
 import coil.request.CachePolicy
 import coil.transform.RoundedCornersTransformation
 import com.codigo.code.R
-import org.w3c.dom.Text
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import kotlin.math.abs
@@ -51,10 +49,10 @@ object BindingAdapter {
 
         val numberString = when {
             abs(voteCount / 1000000) > 1 -> {
-                (voteCount / 1000000).toString().toString() + "M"
+                (voteCount / 1000000).toString() + "M"
             }
             abs(voteCount / 1000) > 1 -> {
-                (voteCount / 1000).toString().toString() + "K"
+                (voteCount / 1000).toString() + "K"
             }
             else -> {
                 voteCount.toString()

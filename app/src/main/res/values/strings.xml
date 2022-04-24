@@ -2,4 +2,6 @@
     <string name="app_name">Code</string>
 
     <string name="imageURL">https://image.tmdb.org/t/p/w500/%s</string>
+    <string name="poster">poster</string>
+    <string name="favorite">favorite</string>
 </resources>

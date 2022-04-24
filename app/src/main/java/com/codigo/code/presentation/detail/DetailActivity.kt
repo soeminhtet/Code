@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.codigo.code.R
 import com.codigo.code.databinding.ActivityDetailBinding
@@ -35,7 +37,9 @@ class DetailActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         lifecycleScope.launchWhenStarted {
-            viewModel.detailModel.collectLatest { model ->
+            viewModel.detailModel
+                .flowWithLifecycle(lifecycle,Lifecycle.State.STARTED)
+                .collectLatest { model ->
                 model?.let { detailModel = it }
                 binding.data = model
                 title = model?.originalTitle ?: "MovieDetail"

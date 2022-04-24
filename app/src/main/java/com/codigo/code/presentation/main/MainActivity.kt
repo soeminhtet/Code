@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.codigo.code.R
@@ -53,14 +55,18 @@ class MainActivity : AppCompatActivity() {
 
         //PopularData
         lifecycleScope.launchWhenStarted {
-            viewModel.populars.collectLatest {
+            viewModel.populars
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collectLatest {
                 popularAdapter.submitData(it)
             }
         }
 
         //PopularState
         lifecycleScope.launchWhenStarted {
-            popularAdapter.loadStateFlow.collectLatest { loadState ->
+            popularAdapter.loadStateFlow
+                .flowWithLifecycle(lifecycle,Lifecycle.State.STARTED)
+                .collectLatest { loadState ->
                 val isListEmpty = loadState.refresh is LoadState.NotLoading && popularAdapter.itemCount == 0
                 if(isListEmpty) showEmptyPopularMovie() else hideEmptyPopularMovie()
 
@@ -84,14 +90,18 @@ class MainActivity : AppCompatActivity() {
 
         //UpComingData
         lifecycleScope.launchWhenStarted {
-            viewModel.upComings.collectLatest {
+            viewModel.upComings
+                .flowWithLifecycle(lifecycle,Lifecycle.State.STARTED)
+                .collectLatest {
                 upComingAdapter.submitData(it)
             }
         }
 
         //UpComingState
         lifecycleScope.launchWhenStarted {
-            upComingAdapter.loadStateFlow.collectLatest { loadState ->
+            upComingAdapter.loadStateFlow
+                .flowWithLifecycle(lifecycle,Lifecycle.State.STARTED)
+                .collectLatest { loadState ->
                 val isListEmpty = loadState.refresh is LoadState.NotLoading && upComingAdapter.itemCount == 0
                 if(isListEmpty) showEmptyUpComingMovie() else hideEmptyUpComingMovie()
 

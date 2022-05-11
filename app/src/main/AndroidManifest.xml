@@ -14,10 +14,6 @@
         android:theme="@style/Theme.Code"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".presentation.detail.DetailActivity"
-            android:exported="false"
-            android:parentActivityName=".presentation.main.MainActivity"/>
-        <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true">
             <intent-filter>

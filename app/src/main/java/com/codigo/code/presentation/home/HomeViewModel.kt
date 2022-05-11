@@ -1,4 +1,4 @@
-package com.codigo.code.presentation.main
+package com.codigo.code.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,15 +7,12 @@ import androidx.paging.cachedIn
 import com.codigo.code.domain.model.Popular
 import com.codigo.code.domain.model.UpComing
 import com.codigo.code.domain.usecases.UseCases
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor(
+class HomeViewModel (
     private val useCases: UseCases
 ): ViewModel() {
 

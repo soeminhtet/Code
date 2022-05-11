@@ -6,9 +6,8 @@ import com.codigo.code.domain.model.UpComing
 import com.codigo.code.domain.repository.LocalDataSource
 import com.codigo.code.domain.repository.RemoteDataSource
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
 
-class Repository @Inject constructor(
+class Repository (
     private val remote: RemoteDataSource,
     private val local : LocalDataSource
 ) {

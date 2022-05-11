@@ -12,10 +12,9 @@ import com.codigo.code.domain.model.Popular
 import com.codigo.code.domain.model.UpComing
 import com.codigo.code.domain.repository.RemoteDataSource
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
 
 @ExperimentalPagingApi
-class RemoteDataSourceImpl @Inject constructor(
+class RemoteDataSourceImpl (
     private val api : API,
     private val database: TMDBDatabase
 ) : RemoteDataSource {

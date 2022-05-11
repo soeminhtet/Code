@@ -5,9 +5,8 @@ import com.codigo.code.domain.model.Popular
 import com.codigo.code.domain.model.UpComing
 import com.codigo.code.domain.repository.LocalDataSource
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
 
-class LocalDataSourceImpl @Inject constructor(database : TMDBDatabase): LocalDataSource {
+class LocalDataSourceImpl (database : TMDBDatabase): LocalDataSource {
     private val popularDao = database.popularDao()
     private val upcomingDao = database.upComingDao()
 

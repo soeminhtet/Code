@@ -1,17 +1,22 @@
-package com.codigo.code.presentation.main
+package com.codigo.code.presentation.home
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.codigo.code.databinding.PopularItemBinding
 import com.codigo.code.domain.model.Popular
-import com.codigo.code.presentation.detail.DetailActivity
+import com.codigo.code.presentation.main.Category
+import com.codigo.code.util.loadURL
+import com.codigo.code.util.setFav
+import com.codigo.code.util.votePercent
 
-class PopularAdapter(private val favCallBack : (Popular)->Unit) : PagingDataAdapter<Popular, PopularAdapter.ViewHolder>(PopularComparator) {
+class PopularAdapter(private val favCallBack : (Popular)->Unit) : PagingDataAdapter<Popular, PopularAdapter.ViewHolder>(
+    PopularComparator
+) {
 
     class ViewHolder(private val binding: PopularItemBinding,private val favCallBack: (Popular) -> Unit) : RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
@@ -19,26 +24,29 @@ class PopularAdapter(private val favCallBack : (Popular)->Unit) : PagingDataAdap
 
         init {
             binding.root.setOnClickListener(this)
-            binding.favImage.setOnClickListener(this)
+            binding.popularFavImg.setOnClickListener(this)
         }
 
         fun bind(data : Popular?) {
             this.data = data
-            data?.let {
-                binding.data = it
-                binding.executePendingBindings()
-            }
+            data?.let{ setData(it) }
+        }
+
+        private fun setData(data : Popular) {
+            binding.popularPosterImg.loadURL(data.posterPath, conorRadius = 10f)
+            binding.popularTitle.text = data.originalTitle ?: "Unknown"
+            binding.popularFavImg.setFav(data.favourite)
+            binding.popularVoteTxt.votePercent(data.voteAverage)
         }
 
         override fun onClick(p0: View?) {
             p0?.let {
                 when(it) {
-                    binding.favImage -> data?.let(favCallBack)
+                    binding.popularFavImg -> data?.let(favCallBack)
                     else -> {
-                        val intent = Intent(it.context, DetailActivity::class.java)
-                        intent.putExtra(MainActivity.MOVIE_ID,data?.id)
-                        intent.putExtra(MainActivity.CATEGORY,Category.POPULAR.name)
-                        it.context.startActivity(intent)
+                        val action = HomeFragmentDirections
+                            .actionHomeFragmentToDetailFragment(data?.id ?: 0, Category.POPULAR.name)
+                        it.findNavController().navigate(action)
                     }
                 }
             }

@@ -10,16 +10,13 @@ import com.codigo.code.domain.model.Popular
 import com.codigo.code.domain.model.UpComing
 import com.codigo.code.domain.usecases.UseCases
 import com.codigo.code.presentation.main.Category
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class DetailViewModel @Inject constructor(
+class DetailViewModel (
     private val useCases: UseCases
 ): ViewModel() {
 
